@@ -15,14 +15,14 @@ class FileController {
       return;
     }
 
-    def file = File.findBySha256Hex(params.id)
+    def file = File.get(params.getInt('id'))
     if(!file){
       render status: NOT_FOUND
       return
     }
 
 
-    java.io.File rawFile = new java.io.File(uploadService.getPath(params.id, file.extension))
+    java.io.File rawFile = new java.io.File(uploadService.getPath(file.sha256Hex, file.extension))
 
     def rangeHeader = request.getHeader("Range")
     //bytes=391694320-
@@ -70,8 +70,9 @@ class FileController {
         response.outputStream.write(buffer, 0, read)
       }
       fis.close()
-    }catch(Exception io){
-//      log.error("catch for outputStream exception")
+    }catch(Exception e){
+//      e.printStackTrace()
+//      e.getCause().printStackTrace()
     }
 
   }
