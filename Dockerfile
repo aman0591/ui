@@ -1,13 +1,11 @@
-FROM mozart/grails:3
+FROM frekele/gradle:2.13-jdk8
 
 ADD . /app
 
-RUN wget https://codeload.github.com/grails/grails-profile-repository/zip/master && \
-    unzip master && \
-    mv grails-profile-repository-master/profiles/ $GRAILS_HOME && \
-    rm -rf master && \
-    rm -rf grails-profile-repository-master
+WORKDIR /app
+RUN gradle assemble
+WORKDIR /app/build/libs
 
 EXPOSE 8080
-ENTRYPOINT ["grails"]
-CMD ["-Dgrails.env=production-no-mysql", "run", "-verboseCompile"]
+ENTRYPOINT ["java"]
+CMD ["-Dgrails.env=production-no-mysql", "-jar", "streama.war"]
