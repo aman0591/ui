@@ -3,6 +3,7 @@ FROM frekele/gradle:2.13-jdk8
 ADD . /app
 
 WORKDIR /app
+RUN echo '{ "allow_root": true }' > .bowerrc
 RUN gradle assemble
 WORKDIR /app/build/libs
 
