@@ -1,11 +1,8 @@
-FROM frekele/gradle:2.13-jdk8
+FROM java:8-jre
 
-ADD . /app
+ADD build/libs/ /app
 
 WORKDIR /app
-RUN echo '{ "allow_root": true }' > .bowerrc
-RUN gradle assemble
-WORKDIR /app/build/libs
 
 EXPOSE 8080
 ENTRYPOINT ["java"]
