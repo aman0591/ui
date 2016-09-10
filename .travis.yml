@@ -7,10 +7,7 @@ language: groovy
 services:
   - docker
 
-jdk:
-  - oraclejdk7
-
-script: gradle check
+jdk: oraclejdk8
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "docker" ]; then
