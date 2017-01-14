@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Page Title</title>
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<p>Type a letter in the input field:</p>
+
+<p><input type="text" ng-model="test"></p>
+
+<ul>
+  <li ng-repeat="x in names | filter:test">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'India',
+        'Sri Lanka',
+        'USA',
+        'Canda',
+        'Germany',
+        'Austria',
+        'Combodia',
+        'Russia',
+        'Paris'
+    ];
+});
+</script>
+
+<p>The list will only consists of names matching the filter.</p>
+
 
 </body>
 </html>
