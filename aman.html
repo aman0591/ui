@@ -6,7 +6,7 @@
 <div ng-app="myApp" ng-controller="namesCtrl">
 
 <p>Type a letter in the input field:</p>
-
+<p>The list will only consists of names matching the filter.</p>
 <p><input type="text" ng-model="test"></p>
 
 <ul>
@@ -32,9 +32,5 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
     ];
 });
 </script>
-
-<p>The list will only consists of names matching the filter.</p>
-
-
 </body>
 </html>
