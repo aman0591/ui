@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rwd1" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Script Tutorials" />
+    <title>TEMP FILES</title>
+    <meta name="description" content="RWD Template">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- add styles -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- add javascripts -->
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/util.js"></script>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <!-- logo -->
+            <a href="#!"><img class="logo" src="images/logo.png" /></a>
+
+            <!-- navigation menu -->
+            <nav>
+                <ul>
+                    <li><a id="workBtn" href="#!/" ng-class="{activeSmall:part == 'projects'}" >Project</a></li>
+                    <li><a id="privacyBtn" href="#!/privacy" ng-class="{activeSmall:part == 'privacy'}">Terms</a></li>
+                    <li><a id="aboutBtn" href="#!/about" ng-class="{activeSmall:part == 'about'}">About</a></li>
+                    <li style="margin-right:0px"><a id="contactBtn" class="active" href="javascript: void(0)" ng-click="showForm()">Me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <!-- main content -->
+    <div style="position:relative">
+        <div style="width:100%" ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
+    </div>
+
+</body>
+</html>
